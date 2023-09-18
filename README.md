@@ -28,7 +28,7 @@ For Auto ALPS Calculation and QC in Python
 * PIL
 * csv
 
-## how to use
+## How to use
 DTI preprocessing for each subject (about 10-30 minutes for single subject, parallel run is reconmmeded)
 ```sh
 ./1_DTI_preprocessing.sh
@@ -38,7 +38,7 @@ Auto ALPS Calculation and QC for all subjects  (less than 5 seconds for single s
 ```sh
 python3 ./2_Automated_DTI-ALPS.py
 ```
-## results
+## Results
 All subjects' bilateral ALPS values would be recorded in the results.csv
 
 All subjects' bilateral QC images would be saved in the subject_l/r.jpg
