@@ -34,7 +34,7 @@ DTI preprocessing for each subject (about 10-30 minutes for single subject, para
 ./1_DTI_preprocessing.sh
 ```
 
-Auto ALPS Calculation and QC for all subjects  (less than 1 seconds for single subject)
+Auto ALPS Calculation and QC for all subjects  (less than 5 seconds for single subject)
 ```sh
 python3 ./2_Automated_DTI-ALPS.py
 ```
