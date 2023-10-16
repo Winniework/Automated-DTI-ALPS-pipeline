@@ -12,6 +12,8 @@ def load_and_pad(in_file):
 
 
 def find_max_mean(matrix,xa_list,xp_list,y_list):
+    global max_positiong
+    global max_positionb
     max_mean = 0
     for y in y_list:
         max_meang = 0
@@ -23,7 +25,8 @@ def find_max_mean(matrix,xa_list,xp_list,y_list):
                     if (i-x)**2 + (j-y)**2 <= 2.5**2:
                         positions.append((i,j))
             valuesg = [matrix[i][j][1] for i,j in positions]
-            meang = np.mean(valuesg)            
+            valuesr = [matrix[i][j][0] for i,j in positions]
+            meang = np.mean(valuesg)-np.mean(valuesr)
             if meang > max_meang:
                 max_meang = meang
                 max_positiong = (x,y)             
@@ -34,7 +37,8 @@ def find_max_mean(matrix,xa_list,xp_list,y_list):
                     if (i-x)**2 + (j-y)**2 <= 2.5**2:
                         positions.append((i,j))
             valuesb = [matrix[i][j][2] for i,j in positions]
-            meanb = np.mean(valuesb)            
+            valuesr = [matrix[i][j][0] for i,j in positions]
+            meanb = np.mean(valuesb)-np.mean(valuesr)
             if meanb > max_meanb:
                 max_meanb = meanb
                 max_positionb = (x,y)        
@@ -123,7 +127,7 @@ for root, dirs, files in os.walk(root_path):
                 print(dir_name)
                 l_max_mean=0
                 r_max_mean=0
-                path_colormap = dir_name + '/dti/DTI_reoriented_ColorMap.nii.gz'
+                path_colormap = dir_name + '/DTI_reoriented_ColorMap.nii.gz'
                 for z in z_list:
                     data = load_and_pad(path_colormap)
                     a_l_position, p_l_position, l_max_meangb = find_max_mean(data[:,:,z],xa_l_list,xp_l_list,y_list)
@@ -162,9 +166,9 @@ for root, dirs, files in os.walk(root_path):
                 z = a_r_max_position[2]
                 plot_roi(colormap,outfile,xa,xp,y,z)
                 
-                path_Dxx = dir_name + '/dti/dti_reoriented_Dxx.nii.gz'
-                path_Dyy = dir_name + '/dti/dti_reoriented_Dyy.nii.gz'
-                path_Dzz = dir_name + '/dti/dti_reoriented_Dzz.nii.gz'
+                path_Dxx = dir_name + '/dti_reoriented_Dxx.nii.gz'
+                path_Dyy = dir_name + '/dti_reoriented_Dyy.nii.gz'
+                path_Dzz = dir_name + '/dti_reoriented_Dzz.nii.gz'
                 
                 dxx_l_a=calculate_circle_mean(a_l_max_position,path_Dxx)
                 dxx_l_p=calculate_circle_mean(p_l_max_position,path_Dxx)
