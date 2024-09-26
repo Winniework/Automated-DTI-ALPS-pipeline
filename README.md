@@ -1,6 +1,5 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 # Automated-DTI-ALPS-pipeline
-This repo accompanies the manuscript "Cerebral Fluid Circulation Modulates Aging-induced Small Vessel Disease Burden and Cognitive Impairment".
 
 Diffusion tensor image analysis along the perivascular space (DTI-ALPS) analysis relies on identifying association and projection fibers, and the method of placing 5 mm-diameter circular regions of interest (ROIs) has been proven to outperform existing automated mapping methods. However, unlike clear lesions, manual placement of ROIs lacks definite standards and changes according to different operators. Because the ROIs are confined to 5 mm circles, it is difficult to assure the accuracy of ROI registration based on whole-brain registration; thus, this method still requires manual adjustment, leading to the publication of a non-automated process. Therefore, we developed an automated analysis pipeline from inputting the original data to computing the final ALPS index.
 
